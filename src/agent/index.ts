@@ -8,6 +8,7 @@ import {
   get_balance,
   getTPS,
   resolveSolDomain,
+  resolveOwner,
   getPrimaryDomain,
   launchPumpFunToken,
   lendAsset,
@@ -101,6 +102,10 @@ export class SolanaAgentKit {
 
   async resolveAllDomains(domains: string[]) {
 	return Promise.allSettled(domains.map((domain) => resolveSolDomain(this, domain)));
+  }
+
+  async resolveOwner(owner: PublicKey) {
+	return resolveOwner(this, owner);
   }
 
   async getPrimaryDomain(account: PublicKey) {
