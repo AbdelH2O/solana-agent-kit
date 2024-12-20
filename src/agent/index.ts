@@ -99,6 +99,10 @@ export class SolanaAgentKit {
     return resolveSolDomain(this, domain);
   }
 
+  async resolveAllDomains(domains: string[]) {
+	return Promise.allSettled(domains.map((domain) => resolveSolDomain(this, domain)));
+  }
+
   async getPrimaryDomain(account: PublicKey) {
     return getPrimaryDomain(this, account);
   }
